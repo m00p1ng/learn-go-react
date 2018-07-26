@@ -17,13 +17,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let socket = this.socket = new Socket(); 
+    let ws = new WebSocket('ws://localhost:4000')
+    let socket = this.socket = new Socket(ws); 
     socket.on('connect', this.onConnect.bind(this));
     socket.on('disconnect', this.onDisconnect.bind(this));
     socket.on('channel add', this.onAddChannel.bind(this));
     socket.on('user add', this.onAddUser.bind(this));
     socket.on('user remove', this.onRemoveUser.bind(this));
-    socket.on('message add', this.onAddMessage.bind(this));
+    socket.on('message add', this.onMessageAdd.bind(this));
   }
 
   onMessageAdd(message) {

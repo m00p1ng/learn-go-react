@@ -1,7 +1,7 @@
-import { EventEmittor } from 'events';
+import { EventEmitter } from 'events';
 
 class Socket {
-  constructor(ws = new WebSocket(), ee = new EventEmittor()) {
+  constructor(ws = new WebSocket(), ee = new EventEmitter()){
     this.ws = ws;
     this.ee = ee;
 
